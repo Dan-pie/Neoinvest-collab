@@ -1,7 +1,7 @@
 import Navbar from "../components/container/NavBar"
 import Simulador from "../components/container/Simulador"
 import { createGlobalStyle } from "styled-components"
-import Tabela from "../components/container/Tabela"
+import table from "../components/table"
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -52,7 +52,7 @@ export default function Dashboard() {
             </nav>
             <main>
                 <Simulador/>
-                <Tabela/>
+                <Table/>
 
             </main>
 
