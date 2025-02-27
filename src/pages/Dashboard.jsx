@@ -72,6 +72,11 @@ export default function Dashboard() {
             console.error('Erro ao buscar as ações do usuário:', error)
         }
     }
+    useEffect(() => {
+        fetchUserStocks();
+        const interval = setInterval(fetchUserStocks, 90000);
+        return () => clearInterval(interval);
+    }, []);
     return (
         <div>
             <GlobalStyle/>
