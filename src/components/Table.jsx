@@ -8,7 +8,7 @@ const StyledTable = styled.table`
 const StyledTh = styled.th`
     padding: 10px;
     background-color: #0A5DA6;
-    color: white;
+    color: #fff;
 `
 
 const StyledTd = styled.td`
@@ -18,6 +18,7 @@ const StyledTd = styled.td`
 const StyledTr = styled.tr`
     text-align: center;
     border-bottom: 2px solid #ccc;
+    color: #0A5DA6;
 
     &:hover {
         background-color: #cccccc;
