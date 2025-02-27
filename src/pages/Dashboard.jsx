@@ -1,5 +1,6 @@
 import Navbar from "../components/container/NavBar"
 import Simulador from "../components/container/Simulador"
+import Loading from '../components/Loading'
 import { createGlobalStyle } from "styled-components"
 import Table from "../components/Table"
 import { useAuth } from "../context/AuthContext"
@@ -45,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function Dashboard() {
+    const [loading, setLoading] = useState(false)
     const [dados, setDados] = useState({
         th: ["Empresa", "Ticket", 'Preço', 'Variação'],
         tb: []
