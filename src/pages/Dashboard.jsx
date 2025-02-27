@@ -3,7 +3,7 @@ import Simulador from "../components/container/Simulador"
 import { createGlobalStyle } from "styled-components"
 import Table from "../components/Table"
 import { useAuth } from "../context/AuthContext"
-
+import { useState } from 'react
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Neutra';
