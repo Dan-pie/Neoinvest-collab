@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
+import { useAuth } from "../context/AuthContext"
 
 const Container = styled.div`
     display: flex;
