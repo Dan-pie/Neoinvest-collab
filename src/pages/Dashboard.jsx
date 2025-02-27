@@ -44,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function Dashboard() {
+    const [dados, setDados] = useState({
+        th: ["Empresa", "Ticket", 'Preço', 'Variação'],
+        tb: []
+    })
     const fetchUserStocks = async () => {       
         try {
             const response = await fetch(`https://neoinvestserver-production.up.railway.app/stocks?userId=${userId}`)
