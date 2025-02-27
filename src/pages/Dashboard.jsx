@@ -72,7 +72,7 @@ export default function Dashboard() {
             </nav>
             <main>
                 <Simulador/>
-                <Table/>
+                <Table dados={dados}/>
 
             </main>
 
