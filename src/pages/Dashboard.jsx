@@ -1,7 +1,7 @@
 import Navbar from "../components/container/NavBar"
 import Simulador from "../components/container/Simulador"
 import { createGlobalStyle } from "styled-components"
-import table from "../components/table"
+import Table from "../components/Table"
 import { useAuth } from "../context/AuthContext"
 
 const GlobalStyle = createGlobalStyle`
