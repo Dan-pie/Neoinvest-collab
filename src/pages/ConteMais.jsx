@@ -155,6 +155,7 @@ export default function Teste() {
                         onKeyDown = {handleKeyDown}
                     />
                 </Cad>
+                <Button text='Adicionar' onClick = {handleSubmit}/>
                 <Button text='Próximo' onClick = {handle}/>
             </Side>
             <ASide>
