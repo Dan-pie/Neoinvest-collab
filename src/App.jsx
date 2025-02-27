@@ -203,7 +203,7 @@ function App() {
       if(stocks.length != 0){
         console.log(stocks[1])
         console.log(stocks.length)
-        navigate('/Home')
+        navigate('/Dashboard')
         return
       }
 
