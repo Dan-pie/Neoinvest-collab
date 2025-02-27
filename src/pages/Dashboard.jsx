@@ -2,6 +2,7 @@ import Navbar from "../components/container/NavBar"
 import Simulador from "../components/container/Simulador"
 import { createGlobalStyle } from "styled-components"
 import table from "../components/table"
+import { useAuth } from "../context/AuthContext"
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -48,6 +49,7 @@ export default function Dashboard() {
         th: ["Empresa", "Ticket", 'Preço', 'Variação'],
         tb: []
     })
+    const userId = useAuth()
     const fetchUserStocks = async () => {       
         try {
             const response = await fetch(`https://neoinvestserver-production.up.railway.app/stocks?userId=${userId}`)
