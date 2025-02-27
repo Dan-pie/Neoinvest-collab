@@ -49,7 +49,7 @@ export default function Tabela() {
     const [stocks, setStocks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const userId = "seuUserIdAqui"; // Definir userId corretamente
+    const { userId } = useAuth() // Definir userId corretamente
 
     const fetchUserStocks = async () => {
         try {
