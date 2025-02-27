@@ -4,7 +4,7 @@ import Loading from '../components/Loading'
 import { createGlobalStyle } from "styled-components"
 import Table from "../components/Table"
 import { useAuth } from "../context/AuthContext"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Neutra';
