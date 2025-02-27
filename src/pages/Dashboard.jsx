@@ -44,6 +44,26 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function Dashboard() {
+    const fetchUserStocks = async () => {       
+        try {
+            const response = await fetch(`https://neoinvestserver-production.up.railway.app/stocks?userId=${userId}`)
+            const data = await response.json()
+
+            setDados(prevState => ({
+                ...prevState,
+                tb: data.map(stock => ({
+                    empresa: stock.companyName,
+                    ticket: stock.symbol,
+                    preco: stock.currentPrice,
+                    variacao: stock.appreciation
+                }))
+            }))
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.error('Erro ao buscar as ações do usuário:', error)
+        }
+    }
     return (
         <div>
             <GlobalStyle/>
