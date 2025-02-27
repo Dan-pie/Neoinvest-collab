@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 const Container = styled.div`
     display: flex;
@@ -48,47 +47,33 @@ const Li = styled.li`
 `;
 
 export default function Tabela() {
-    const API_KEY = 'currju9r01qt2ncgsik0currju9r01qt2ncgsikg'; // 🔹 Use variáveis de ambiente
+    
     const [stocks, setStocks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
 
-    const fetchStock = async () => {
+    const fetchUserStocks = async () => {       
         try {
-            console.log("Buscando dados...");
-            const response = await axios.get(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=${API_KEY}`);
+            const response = await fetch(`https://neoinvestserver-production.up.railway.app/stocks?userId=${userId}`)
+            const data = await response.json()
 
-            if (!response.data || response.data.length === 0) {
-                throw new Error("Nenhum dado encontrado");
-            }
-
-            const top5 = response.data.slice(0, 5);
-
-            const details = await Promise.all(
-                top5.map(async (stock) => {
-                    const quoteRes = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${stock.symbol}&token=${API_KEY}`);
-                    
-                    const price = quoteRes.data.c || "N/A";
-                    const change = typeof quoteRes.data.dp === 'number' ? quoteRes.data.dp.toFixed(2) : "N/A";
-
-                    return {
-                        name: stock.description || "Desconhecido",
-                        symbol: stock.symbol,
-                        price: price,
-                        change: change,
-                    };
-                })
-            );
-
-            setStocks(details);
-        } catch (erro) {
-            setError(erro.message);
-            console.error("Erro na API:", erro);
-        } finally {
-            setLoading(false);
+            setDados(prevState => ({
+                ...prevState,
+                tb: data.map(stock => ({
+                    empresa: stock.companyName,
+                    ticket: stock.symbol,
+                    preco: stock.currentPrice,
+                    variacao: stock.appreciation
+                }))
+            }))
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.error('Erro ao buscar as ações do usuário:', error)
         }
-    };
+    }
+    
 
     useEffect(() => {
         fetchStock();
